@@ -1,0 +1,1044 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ABYS Modas · Painel de Receitas YTD ago/2026</title></head><body>
+<title>Vendas ABYS YTD 2026</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  color-scheme: light;
+  /* marca ABYS — laranja extraída das fotos de fachada e loja */
+  --abys:#FF6600; --abys-dk:#E25C00; --abys-lt:#FF8533;
+  /* neutros com viés quente, puxados para o laranja */
+  --paper:#FAF6F3; --surface:#FFFFFF; --surface-2:#FBF6F2; --surface-3:#F4EBE4;
+  --ink:#241812; --ink-2:#6B594E; --ink-3:#9D8A7D;
+  --rule:#EDE0D6; --rule-2:#DCC9BA;
+  /* dados — par validado (ΔE CVD 24,8 · normal 35,3) */
+  --s1:#1A5DAE; --s2:#E25C00;
+  --abc1:#9A3E00; --abc2:#E25C00; --abc3:#F0924A;
+  --pos:#1C7C4A; --pos-t:#E6F4EC; --neg:#C62828; --neg-t:#FCEBEB;
+  --warn:#B06A00; --warn-t:#FFF4E3;
+  --sh:0 1px 2px rgba(60,30,10,.05), 0 8px 22px -16px rgba(60,30,10,.32);
+  --foot-bg:#241812; --foot-tx:#B6A092; --foot-st:#FAF6F3;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --paper:#15100D; --surface:#1E1714; --surface-2:#251D18; --surface-3:#2E241E;
+    --ink:#F7EFE9; --ink-2:#C2AC9D; --ink-3:#958173;
+    --rule:#352A23; --rule-2:#47372E;
+    --s1:#4C8FD6; --s2:#E25C00;
+    --abc1:#F7A96B; --abc2:#E8692A; --abc3:#A84400;
+    --pos:#35A96B; --pos-t:#13291D; --neg:#E8635C; --neg-t:#2E1715;
+    --warn:#D9962F; --warn-t:#2C2112;
+    --sh:0 1px 2px rgba(0,0,0,.4), 0 10px 26px -18px rgba(0,0,0,.9);
+  --foot-bg:#0E0A08; --foot-tx:#8E7A6C; --foot-st:#F7EFE9;
+    --foot-bg:#0E0A08; --foot-tx:#8E7A6C; --foot-st:#F7EFE9;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --paper:#15100D; --surface:#1E1714; --surface-2:#251D18; --surface-3:#2E241E;
+  --ink:#F7EFE9; --ink-2:#C2AC9D; --ink-3:#958173;
+  --rule:#352A23; --rule-2:#47372E;
+  --s1:#4C8FD6; --s2:#E25C00;
+  --abc1:#F7A96B; --abc2:#E8692A; --abc3:#A84400;
+  --pos:#35A96B; --pos-t:#13291D; --neg:#E8635C; --neg-t:#2E1715;
+  --warn:#D9962F; --warn-t:#2C2112;
+  --sh:0 1px 2px rgba(0,0,0,.4), 0 10px 26px -18px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box}
+body{margin:0; background:var(--paper); color:var(--ink);
+  font-family:Nunito,"Segoe UI",system-ui,sans-serif; font-size:15.5px; line-height:1.6;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:1200px; margin:0 auto; padding:0 20px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+/* ============ CABEÇALHO DA MARCA ============ */
+.top{background:var(--abys); color:#fff; padding:22px 0 18px}
+.topin{max-width:1200px; margin:0 auto; padding:0 20px; display:flex; align-items:center; gap:18px; flex-wrap:wrap}
+.topdiv{width:1px; height:30px; background:rgba(255,255,255,.35)}
+.topttl{font-weight:700; font-size:17px; letter-spacing:-.01em}
+.topsub{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em;
+  text-transform:uppercase; color:rgba(255,255,255,.86); margin-top:2px}
+.topright{margin-left:auto; text-align:right}
+.topright .l{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.12em;
+  text-transform:uppercase; color:rgba(255,255,255,.8)}
+.topright .v{font-weight:800; font-size:15px; margin-top:1px}
+.logo-abys{height:46px; width:auto; color:#fff; display:block; flex:0 0 auto}
+.by .l{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.12em;
+  text-transform:uppercase; color:rgba(255,255,255,.8); margin-bottom:4px}
+.logo-accex{height:22px; width:auto; display:block}
+@media (max-width:640px){
+  .logo-abys{height:36px}
+  .topright{margin-left:0; text-align:left}
+}
+
+/* ============ ABAS TIPO PLANILHA ============ */
+.tabs{background:var(--surface-3); border-bottom:2px solid var(--abys); position:sticky; top:0; z-index:50}
+.tabsin{max-width:1200px; margin:0 auto; padding:7px 20px 0; display:flex; gap:3px; overflow-x:auto; scrollbar-width:thin}
+.tab{flex:0 0 auto; border:1px solid var(--rule-2); border-bottom:none;
+  border-radius:8px 8px 0 0; background:var(--surface-2); color:var(--ink-2);
+  font-family:Nunito,sans-serif; font-size:13px; font-weight:700; letter-spacing:-.005em;
+  padding:9px 15px 10px; cursor:pointer; white-space:nowrap; position:relative; top:1px;
+  display:flex; align-items:center; gap:7px}
+.tab:hover{background:var(--surface); color:var(--ink)}
+.tab .dot{width:7px; height:7px; border-radius:2px; background:var(--rule-2); flex:0 0 auto}
+.tab[aria-selected="true"]{background:var(--surface); color:var(--abys-dk); border-color:var(--abys);
+  border-bottom:2px solid var(--surface); top:2px; box-shadow:0 -2px 6px -3px rgba(226,92,0,.4)}
+:root[data-theme="dark"] .tab[aria-selected="true"]{color:var(--abys-lt)}
+.tab[aria-selected="true"] .dot{background:var(--abys)}
+.tab:focus-visible{outline:2px solid var(--abys); outline-offset:1px}
+
+.sheet{display:none; padding:30px 0 70px; animation:fade .18s ease-out}
+.sheet.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.sheet{animation:none}}
+
+.shead{display:flex; align-items:flex-end; gap:14px; flex-wrap:wrap; margin-bottom:6px}
+.shead h2{font-weight:900; letter-spacing:-.032em; font-size:28px; margin:0; flex:1}
+.shead .tagx{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink-3); padding-bottom:6px}
+.snote{color:var(--ink-2); max-width:76ch; margin:0 0 20px; font-size:15.5px}
+p{margin:0 0 12px} strong{font-weight:800}
+
+.card{background:var(--surface); border:1px solid var(--rule); border-radius:14px;
+  padding:20px 22px 14px; box-shadow:var(--sh); margin-bottom:14px}
+.card h3{font-weight:800; font-size:17px; letter-spacing:-.02em; margin:0 0 3px}
+.card .cap{font-size:13.5px; color:var(--ink-2); margin:0 0 16px; max-width:84ch}
+.g2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+@media (max-width:900px){.g2{grid-template-columns:1fr}}
+
+/* KPIs */
+.kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px}
+@media (max-width:860px){.kpis{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.kpis{grid-template-columns:1fr}}
+.kpi{background:var(--surface); border:1px solid var(--rule); border-radius:14px; padding:16px 18px; box-shadow:var(--sh)}
+.kpi .k{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink-3)}
+.kpi .v{font-weight:900; font-size:31px; letter-spacing:-.04em; margin-top:5px;
+  font-variant-numeric:tabular-nums; line-height:1.08}
+.kpi .f{display:flex; align-items:center; gap:8px; margin-top:8px; flex-wrap:wrap}
+.pill{display:inline-flex; align-items:center; gap:4px; font-family:"IBM Plex Mono",monospace;
+  font-size:11px; font-weight:600; padding:3px 9px; border-radius:20px}
+.pill.up{background:var(--pos-t); color:var(--pos)}
+.pill.dn{background:var(--neg-t); color:var(--neg)}
+.pill.nt{background:var(--surface-3); color:var(--ink-2)}
+.kpi .h{font-size:12px; color:var(--ink-3)}
+.spark{margin-top:10px; height:30px}
+.spark svg{display:block; width:100%; height:30px}
+
+/* gráficos */
+.chart{width:100%; overflow-x:auto}
+.chart svg{display:block; width:100%; height:auto; min-width:540px}
+.ax{font-family:"IBM Plex Mono",monospace; font-size:10.5px; fill:var(--ink-3)}
+.axv{font-family:"IBM Plex Mono",monospace; font-size:10.5px; fill:var(--ink-2); font-weight:500}
+.gl{stroke:var(--rule); stroke-width:1}
+.zl{stroke:var(--rule-2); stroke-width:1.5}
+.mk{cursor:default; transition:opacity .12s}
+.mk:hover{opacity:.82}
+.legend{display:flex; flex-wrap:wrap; gap:6px 18px; margin:0 0 12px; font-size:12.5px; color:var(--ink-2); font-weight:600}
+.legend span{display:inline-flex; align-items:center; gap:7px}
+.legend i{width:10px; height:10px; border-radius:3px; display:block}
+
+#tip{position:fixed; pointer-events:none; opacity:0; transition:opacity .1s;
+  background:var(--ink); color:var(--paper); border-radius:9px; padding:9px 12px;
+  font-family:"IBM Plex Mono",monospace; font-size:11.5px; line-height:1.55; z-index:95;
+  box-shadow:0 10px 30px -10px rgba(0,0,0,.5); max-width:270px}
+#tip b{font-weight:700; display:block; margin-bottom:3px; font-size:12px}
+
+/* tabelas */
+.tbl{overflow-x:auto; margin:4px 0 8px}
+table{border-collapse:collapse; width:100%; font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px; font-variant-numeric:tabular-nums}
+th,td{text-align:right; padding:7px 10px; border-bottom:1px solid var(--rule); white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--ink-3); font-weight:500; letter-spacing:.06em; text-transform:uppercase;
+  font-size:10px; border-bottom:1px solid var(--rule-2)}
+tr.tot td{font-weight:700; background:var(--surface-3)}
+details{border-top:1px solid var(--rule); margin-top:10px}
+summary{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); padding:10px 0 3px; cursor:pointer; list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸ "; color:var(--abys)}
+details[open] summary::before{content:"▾ "}
+summary:hover{color:var(--ink)}
+
+/* insights */
+.ins{display:grid; grid-template-columns:auto 1fr; gap:15px; align-items:start;
+  background:var(--surface); border:1px solid var(--rule); border-left:4px solid var(--rule-2);
+  border-radius:11px; padding:15px 18px; margin-bottom:10px}
+.ins.bad{border-left-color:var(--neg)} .ins.good{border-left-color:var(--pos)}
+.ins.warn{border-left-color:var(--warn)} .ins.brand{border-left-color:var(--abys)}
+.ins .badge{font-family:"IBM Plex Mono",monospace; font-size:10px; font-weight:600;
+  letter-spacing:.1em; text-transform:uppercase; padding:5px 9px; border-radius:7px;
+  white-space:nowrap; margin-top:2px; background:var(--surface-3); color:var(--ink-2)}
+.ins.bad .badge{background:var(--neg-t); color:var(--neg)}
+.ins.good .badge{background:var(--pos-t); color:var(--pos)}
+.ins.warn .badge{background:var(--warn-t); color:var(--warn)}
+.ins.brand .badge{background:rgba(255,102,0,.12); color:var(--abys-dk)}
+:root[data-theme="dark"] .ins.brand .badge{color:var(--abys-lt)}
+.ins h4{margin:0 0 4px; font-size:15.5px; font-weight:800; letter-spacing:-.015em}
+.ins p{margin:0; font-size:14.5px; color:var(--ink-2)}
+@media (max-width:640px){.ins{grid-template-columns:1fr}}
+
+/* ponte + calculadora */
+.bridge td{padding:9px 12px}
+.bridge tr.sub td{background:var(--surface-3); font-weight:700}
+.bridge tr.tot td{background:var(--surface-3); font-weight:800; border-bottom:2px solid var(--rule-2)}
+.bridge tr.ded td:first-child{padding-left:24px; color:var(--ink-2)}
+.bridge .mut{color:var(--ink-3)}
+.calc{display:grid; grid-template-columns:1fr 290px; gap:18px; align-items:start}
+@media (max-width:900px){.calc{grid-template-columns:1fr}}
+.ctrl{background:var(--surface-2); border:1px solid var(--rule); border-radius:12px; padding:16px}
+.ctrl h5{margin:0 0 3px; font-size:13px; font-weight:800}
+.ctrl .hint{font-size:11.5px; color:var(--ink-3); margin:0 0 12px}
+.segs{display:flex; gap:3px; margin-bottom:14px; background:var(--surface-3); padding:3px; border-radius:9px}
+.segs button{flex:1; border:0; background:transparent; font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px; font-weight:600; padding:8px 3px; border-radius:7px; cursor:pointer; color:var(--ink-2)}
+.segs button[aria-pressed="true"]{background:var(--abys); color:#fff}
+.fld{margin-bottom:12px}
+.fld label{display:flex; justify-content:space-between; font-family:"IBM Plex Mono",monospace;
+  font-size:11px; color:var(--ink-2); margin-bottom:5px}
+.fld label b{color:var(--ink); font-weight:700}
+.fld input[type=range]{width:100%; accent-color:var(--abys); height:20px}
+.out{background:var(--abys); color:#fff; border-radius:12px; padding:16px 18px; margin-top:2px}
+.out .k{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.12em;
+  text-transform:uppercase; opacity:.85}
+.out .v{font-weight:900; font-size:33px; letter-spacing:-.04em; margin-top:3px; font-variant-numeric:tabular-nums}
+.out .s{font-size:12.5px; opacity:.9; margin-top:5px; font-variant-numeric:tabular-nums}
+.out hr{border:0; border-top:1px solid rgba(255,255,255,.28); margin:12px 0}
+
+
+.lst{margin:0; padding:0; list-style:none}
+.lst li{position:relative; padding:0 0 0 20px; margin-bottom:11px; font-size:13.5px;
+  line-height:1.5; color:var(--ink-2)}
+.lst li:last-child{margin-bottom:0}
+.lst li::before{content:''; position:absolute; left:2px; top:7px; width:7px; height:7px;
+  border-radius:2px; background:var(--abys)}
+.lst li strong{color:var(--ink); font-weight:800}
+
+/* ---------- grade de análise ---------- */
+.gridwrap{margin:2px -4px 0; padding:0 4px}
+@media (max-width:880px){.gridwrap{overflow-x:auto}
+  .grid th{position:static}}
+.grid{width:100%; min-width:680px; border-collapse:separate; border-spacing:0}
+.grid th{position:sticky; top:45px; z-index:2; background:var(--surface);
+  font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--ink-3); font-weight:600; padding:10px 9px; text-align:right;
+  border-bottom:2px solid var(--rule-2); white-space:nowrap; cursor:pointer; user-select:none}
+.grid th:first-child{text-align:left}
+.grid th:hover{color:var(--abys-dk)}
+:root[data-theme="dark"] .grid th:hover{color:var(--abys-lt)}
+.grid th .ar{opacity:.22; margin-left:4px; font-size:9px}
+.grid th.on{color:var(--abys-dk)} .grid th.on .ar{opacity:1}
+:root[data-theme="dark"] .grid th.on{color:var(--abys-lt)}
+.grid td{padding:8px 9px; border-bottom:1px solid var(--rule); text-align:right;
+  font-variant-numeric:tabular-nums; font-family:"IBM Plex Mono",monospace; font-size:12px; white-space:nowrap}
+.grid td:first-child{text-align:left; font-family:Nunito,sans-serif; font-weight:800; font-size:13.5px}
+.grid tbody tr:hover td{background:var(--surface-2)}
+.grid tbody tr.low td:first-child{box-shadow:inset 3px 0 0 var(--neg)}
+.grid tfoot td{padding:10px 9px; font-weight:800; background:var(--surface-3);
+  border-top:2px solid var(--rule-2); border-bottom:none; font-size:12px}
+.grid tfoot td:first-child{font-family:Nunito,sans-serif}
+.bc{width:30%; padding-right:12px !important}
+.bar{height:10px; border-radius:5px; background:var(--s1); display:block; min-width:2px}
+.bar.ago{background:var(--s2)}
+.barw{display:flex; align-items:center; gap:2px; width:100%}
+.chip{display:inline-block; padding:2px 8px; border-radius:7px; font-size:11px; font-weight:700;
+  font-family:"IBM Plex Mono",monospace}
+.chip.g{background:var(--pos-t); color:var(--pos)}
+.chip.r{background:var(--neg-t); color:var(--neg)}
+.chip.n{background:var(--surface-3); color:var(--ink-2)}
+
+/* ---------- faixa de orientação ---------- */
+.strip{display:flex; gap:0; flex-wrap:wrap; background:var(--surface); border:1px solid var(--rule);
+  border-radius:12px; overflow:hidden; margin-bottom:14px; box-shadow:var(--sh)}
+.strip > div{flex:1 1 150px; padding:13px 16px; border-right:1px solid var(--rule)}
+.strip > div:last-child{border-right:none}
+.strip .k{font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3)}
+.strip .v{font-weight:900; font-size:21px; letter-spacing:-.03em; margin-top:3px; font-variant-numeric:tabular-nums}
+.strip .s{font-size:11.5px; color:var(--ink-3); margin-top:2px}
+
+.howto{display:flex; align-items:flex-start; gap:9px; background:var(--surface-2);
+  border:1px dashed var(--rule-2); border-radius:10px; padding:11px 14px; margin-bottom:14px;
+  font-size:13px; color:var(--ink-2)}
+.howto b{color:var(--ink); font-weight:800}
+.howto .ic{font-family:"IBM Plex Mono",monospace; font-size:10px; font-weight:700; color:var(--abys-dk);
+  letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; padding-top:2px}
+:root[data-theme="dark"] .howto .ic{color:var(--abys-lt)}
+
+footer{background:var(--foot-bg); color:var(--foot-tx); padding:24px 0 34px;
+  font-family:"IBM Plex Mono",monospace; font-size:11.5px; line-height:1.85}
+footer b{color:var(--foot-st); font-weight:600}
+</style>
+
+<div class="top"><div class="topin">
+  <svg class="logo-abys" viewBox="0 0 500 146" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="aby's"><g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path  d="M 398.5,-0.5 C 414.5,-0.5 430.5,-0.5 446.5,-0.5C 441.991,9.69128 438.991,20.3579 437.5,31.5C 448.5,31.5 459.5,31.5 470.5,31.5C 471.86,23.7281 473.693,16.0614 476,8.5C 477.642,4.69966 480.142,1.69966 483.5,-0.5C 488.167,-0.5 492.833,-0.5 497.5,-0.5C 497.833,0.5 498.5,1.16667 499.5,1.5C 499.5,6.16667 499.5,10.8333 499.5,15.5C 497.827,20.9904 496.327,26.6571 495,32.5C 491.574,37.3061 487.074,40.8061 481.5,43C 466.232,47.4148 451.899,53.7482 438.5,62C 433.468,66.6929 429.635,72.1929 427,78.5C 423.697,91.3715 421.197,104.371 419.5,117.5C 413.69,118.49 407.69,118.823 401.5,118.5C 394.893,118.065 390.393,114.732 388,108.5C 386.742,98.5732 386.076,88.5732 386,78.5C 385.333,56.8333 385.333,35.1667 386,13.5C 387.926,6.74479 392.093,2.07812 398.5,-0.5 Z"/><path  d="M 107.5,-0.5 C 116.167,-0.5 124.833,-0.5 133.5,-0.5C 133.125,1.69764 132.458,3.69764 131.5,5.5C 129.74,9.54654 128.74,13.8799 128.5,18.5C 127.588,23.8816 126.754,29.215 126,34.5C 127.399,33.7734 128.899,33.2734 130.5,33C 137.5,32.3333 144.5,32.3333 151.5,33C 157.432,33.9355 161.099,37.2689 162.5,43C 157.206,64.4679 152.04,85.9679 147,107.5C 143.573,114.105 138.073,117.605 130.5,118C 118.502,119.956 106.502,119.956 94.5,118C 88.014,117.505 84.014,114.172 82.5,108C 91.0271,71.8625 99.3604,35.6958 107.5,-0.5 Z M 127.5,42.5 C 132.22,41.8471 135.22,43.6804 136.5,48C 132.389,66.9423 127.889,85.7756 123,104.5C 119.867,107.877 116.034,109.044 111.5,108C 109.365,107.241 108.032,105.741 107.5,103.5C 111.997,84.8438 116.497,66.1771 121,47.5C 122.805,45.1743 124.972,43.5077 127.5,42.5 Z"/><path style="opacity:0.408"  d="M 131.5,5.5 C 131.26,10.1201 130.26,14.4535 128.5,18.5C 128.74,13.8799 129.74,9.54654 131.5,5.5 Z"/><path  d="M 279.5,18.5 C 276.373,30.5493 273.04,42.5493 269.5,54.5C 265.774,54.8226 262.107,54.4892 258.5,53.5C 259.891,47.2581 260.558,40.9248 260.5,34.5C 258.146,20.6934 263.812,14.5267 277.5,16C 278.381,16.7083 279.047,17.5416 279.5,18.5 Z"/><path  d="M -0.5,112.5 C -0.5,108.833 -0.5,105.167 -0.5,101.5C 0.0492663,88.5831 6.3826,79.7498 18.5,75C 28.8187,71.783 38.8187,67.783 48.5,63C 51.2049,57.4753 52.3716,51.642 52,45.5C 47.1548,42.7133 42.4882,43.0467 38,46.5C 36.189,51.7436 34.689,57.0769 33.5,62.5C 25.8622,63.4975 18.1955,63.8308 10.5,63.5C 11.3648,56.7059 12.8648,50.0392 15,43.5C 18.3823,38.219 23.2156,35.0523 29.5,34C 42.5187,30.9121 55.5187,30.9121 68.5,34C 74.4603,35.2898 77.4603,38.9565 77.5,45C 73.1955,67.0506 68.0289,88.8839 62,110.5C 58.0831,114.709 53.2498,117.209 47.5,118C 35.1667,120 22.8333,120 10.5,118C 6.25859,117.213 2.59192,115.379 -0.5,112.5 Z M 42.5,78.5 C 43.5,78.5 44.5,78.5 45.5,78.5C 43.9859,86.5575 42.1526,94.5575 40,102.5C 36.5234,108.214 31.69,109.714 25.5,107C 24.6152,100.387 25.4485,93.8869 28,87.5C 32.005,83.085 36.8383,80.085 42.5,78.5 Z"/><path  d="M 274.5,86.5 C 282.903,85.8665 290.903,86.5332 298.5,88.5C 297.98,93.5815 296.98,98.5815 295.5,103.5C 296.409,106.66 298.575,108.327 302,108.5C 305.07,107.924 307.737,106.591 310,104.5C 311.731,99.4124 313.231,94.2458 314.5,89C 313.899,87.395 312.899,86.0616 311.5,85C 303.288,80.7274 294.955,76.7274 286.5,73C 281.782,69.6567 280.282,65.1567 282,59.5C 283.046,53.3165 284.712,47.3165 287,41.5C 289.892,38.9426 293.059,36.776 296.5,35C 312.62,30.4671 328.62,30.8005 344.5,36C 347.466,38.2651 348.799,41.2651 348.5,45C 347.847,50.9334 346.68,56.7667 345,62.5C 336.919,63.4825 328.752,63.8158 320.5,63.5C 322.308,57.6104 323.142,51.6104 323,45.5C 316.676,41.9727 311.676,43.306 308,49.5C 306.676,53.4463 306.009,57.4463 306,61.5C 314.433,66.9683 323.266,71.8016 332.5,76C 336.496,78.8267 338.83,82.6601 339.5,87.5C 338.003,93.4895 336.503,99.4895 335,105.5C 332.221,113.151 326.721,117.317 318.5,118C 303.998,120.468 289.664,119.801 275.5,116C 271.818,113.836 270.151,110.669 270.5,106.5C 271.518,99.7636 272.851,93.0969 274.5,86.5 Z"/><path  d="M 172.5,144.5 C 170.393,143.532 168.059,143.198 165.5,143.5C 165.5,141.5 165.5,139.5 165.5,137.5C 165.5,136.167 165.5,134.833 165.5,133.5C 176.958,134.01 188.291,133.177 199.5,131C 202.55,127.9 204.55,124.233 205.5,120C 195.06,119.962 184.727,118.962 174.5,117C 169.028,114.557 166.862,110.39 168,104.5C 173.661,80.8553 179.161,57.1886 184.5,33.5C 192.5,33.5 200.5,33.5 208.5,33.5C 203.424,56.3049 198.424,79.1383 193.5,102C 193.544,103.764 193.878,105.431 194.5,107C 199.229,109.041 203.729,108.875 208,106.5C 213.353,82.4225 219.019,58.4225 225,34.5C 232.747,33.5183 240.58,33.185 248.5,33.5C 243.147,59.9145 237.314,86.2479 231,112.5C 229.438,120.42 227.104,128.087 224,135.5C 220.846,139.661 216.679,142.161 211.5,143C 198.546,144.377 185.546,144.877 172.5,144.5 Z"/><path style="opacity:0.714"  d="M 260.5,34.5 C 260.558,40.9248 259.891,47.2581 258.5,53.5C 262.107,54.4892 265.774,54.8226 269.5,54.5C 265.702,55.4834 261.702,55.8168 257.5,55.5C 258.269,48.3316 259.269,41.3316 260.5,34.5 Z"/><path style="opacity:0.451"  d="M 279.5,18.5 C 280.622,20.2884 280.789,22.2884 280,24.5C 276.765,34.7109 273.265,44.7109 269.5,54.5C 273.04,42.5493 276.373,30.5493 279.5,18.5 Z"/><path  d="M 484.5,59.5 C 486.288,59.2148 487.955,59.5481 489.5,60.5C 485.826,76.864 481.992,93.1973 478,109.5C 471.504,119.708 463.17,121.708 453,115.5C 451.994,113.466 451.494,111.3 451.5,109C 453.108,97.9621 455.608,87.1287 459,76.5C 461.075,72.421 463.908,68.921 467.5,66C 473.16,63.5073 478.826,61.3407 484.5,59.5 Z"/><path style="opacity:0.035"  d="M 274.5,86.5 C 282.65,85.5073 290.983,85.1739 299.5,85.5C 299.737,86.791 299.404,87.791 298.5,88.5C 290.903,86.5332 282.903,85.8665 274.5,86.5 Z"/><path style="opacity:0.07"  d="M 419.5,117.5 C 420.043,117.56 420.376,117.893 420.5,118.5C 414.012,119.817 407.678,119.817 401.5,118.5C 407.69,118.823 413.69,118.49 419.5,117.5 Z"/><path style="opacity:0.373"  d="M 165.5,137.5 C 165.5,139.5 165.5,141.5 165.5,143.5C 168.059,143.198 170.393,143.532 172.5,144.5C 169.278,144.892 166.278,144.392 163.5,143C 164.109,141.052 164.776,139.218 165.5,137.5 Z"/></g></svg>
+  <span class="topdiv"></span>
+  <div>
+    <div class="topttl">Painel de Vendas</div>
+    <div class="topsub">Acumulado jan–ago 2026</div>
+  </div>
+  <div class="topright">
+    <div class="l">Receita YTD</div>
+    <div class="v">R$ 78,25 mi</div>
+  </div>
+  <span class="topdiv"></span>
+  <div class="by">
+    <div class="l">Elaborado por</div>
+    <img class="logo-accex" alt="ACCEX" src="data:image/png;base64,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">
+  </div>
+</div></div>
+
+<div class="tabs"><div class="tabsin" role="tablist" aria-label="Seções do painel">
+  <button class="tab" role="tab" data-s="resumo"     aria-selected="true"><span class="dot"></span>Resumo</button>
+  <button class="tab" role="tab" data-s="mensal"     aria-selected="false"><span class="dot"></span>Mensal</button>
+  <button class="tab" role="tab" data-s="filiais"    aria-selected="false"><span class="dot"></span>Filiais</button>
+  <button class="tab" role="tab" data-s="sortimento" aria-selected="false"><span class="dot"></span>Sortimento</button>
+  <button class="tab" role="tab" data-s="marcas"     aria-selected="false"><span class="dot"></span>Marcas</button>
+  <button class="tab" role="tab" data-s="mix"        aria-selected="false"><span class="dot"></span>Mix</button>
+  <button class="tab" role="tab" data-s="markup"     aria-selected="false"><span class="dot"></span>Markup</button>
+  <button class="tab" role="tab" data-s="margem"     aria-selected="false"><span class="dot"></span>Margem de contribuição</button>
+  <button class="tab" role="tab" data-s="ressalvas"  aria-selected="false"><span class="dot"></span>Ressalvas</button>
+</div></div>
+
+<div class="wrap">
+
+<!-- ===================== RESUMO ===================== -->
+<section class="sheet on" id="s-resumo" role="tabpanel">
+  <div class="shead"><h2>Resumo</h2><span class="tagx">jan–ago 2026 vs 2025</span></div>
+  <p class="snote">A receita cresceu 1,0% em oito meses. O volume caiu 2,4%. A diferença entre os dois é o retrato do ano: a rede sustentou o faturamento subindo preço, não vendendo mais.</p>
+  <div class="kpis">
+    <div class="kpi"><div class="k">Receita</div><div class="v">R$ 78,25 mi</div>
+      <div class="f"><span class="pill up">▲ 1,0%</span><span class="h">R$ 77,45 mi em 2025</span></div>
+      <div class="spark"><svg id="sp1" viewBox="0 0 260 30" preserveAspectRatio="none" aria-hidden="true"></svg></div></div>
+    <div class="kpi"><div class="k">Peças vendidas</div><div class="v">632.344</div>
+      <div class="f"><span class="pill dn">▼ 2,4%</span><span class="h">−15.754 peças</span></div></div>
+    <div class="kpi"><div class="k">Preço médio por peça</div><div class="v">R$ 123,75</div>
+      <div class="f"><span class="pill up">▲ 3,6%</span><span class="h">R$ 119,50 em 2025</span></div></div>
+    <div class="kpi"><div class="k">Margem comercial</div><div class="v">60,0%</div>
+      <div class="f"><span class="pill up">▲ 1,0 p.p.</span><span class="h">markup 2,50x</span></div>
+      <div class="spark"><svg id="sp2" viewBox="0 0 260 30" preserveAspectRatio="none" aria-hidden="true"></svg></div></div>
+    <div class="kpi"><div class="k">Lojas comparáveis</div><div class="v" style="color:var(--pos)">+5,9%</div>
+      <div class="f"><span class="pill up">▲ 2,2% em peças</span><span class="h">16 filiais · R$ 76,14 mi</span></div></div>
+    <div class="kpi"><div class="k">Parque descontinuado</div><div class="v" style="color:var(--neg)">−R$ 3,84 mi</div>
+      <div class="f"><span class="pill dn">filiais 14, 44 e 40</span><span class="h">−R$ 3,41 mi líquido da 37</span></div></div>
+  </div>
+
+  <div class="card">
+    <h3>De onde veio o crescimento de R$ 800 mil</h3>
+    <p class="cap">Ponte entre a receita de 2025 e a de 2026 no acumulado de oito meses, separando quantidade de preço.</p>
+    <div class="chart"><svg id="c-ponte" viewBox="0 0 900 290" role="img" aria-label="Ponte de receita: efeito volume negativo compensado por efeito preço positivo"></svg></div>
+  </div>
+
+  <div class="ins brand">
+    <span class="badge">Tese</span>
+    <div><h4>A rede continua trocando volume por preço</h4>
+    <p>Perdeu R$ 2,77 milhões porque vendeu menos peças e recuperou R$ 3,57 milhões subindo preço. Em julho a conta era −2,96 / +3,38; em agosto o padrão se manteve. A alavanca de preço segue carregando o resultado sozinha.</p></div>
+  </div>
+  <div class="ins good">
+    <span class="badge">O que vai bem</span>
+    <div><h4>A operação comparável acelerou</h4>
+    <p>As 16 lojas com operação integral nos dois anos cresceram 5,9% — contra 5,3% no fechamento de julho — e com volume positivo de 2,2%. O núcleo maduro não só está saudável como está ganhando ritmo.</p></div>
+  </div>
+  <div class="ins bad">
+    <span class="badge">O que trava</span>
+    <div><h4>O parque perdido chegou a R$ 3,84 milhões</h4>
+    <p>As filiais 14, 44 e 40 retiraram R$ 3,84 milhões do acumulado; descontada a abertura da 37, a perda líquida é de R$ 3,41 milhões. Era R$ 2,88 milhões em julho — o buraco cresce a cada mês em que a decisão não é tomada.</p></div>
+  </div>
+</section>
+
+<!-- ===================== MENSAL ===================== -->
+<section class="sheet" id="s-mensal" role="tabpanel">
+  <div class="shead"><h2>Série mensal</h2><span class="tagx">20 meses</span></div>
+  <p class="snote">Receita mensal de janeiro de 2025 a agosto de 2026. Agosto de 2026 fechou em R$ 10,90 milhões com margem de 59,7%.</p>
+  <div class="card">
+    <div class="legend"><span><i style="background:var(--s1)"></i>2025</span><span><i style="background:var(--s2)"></i>2026</span></div>
+    <div class="chart"><svg id="c-mensal" viewBox="0 0 900 300" role="img" aria-label="Receita mensal de janeiro de 2025 a agosto de 2026"></svg></div>
+    <details open><summary>Dados do gráfico</summary><div class="tbl"><table id="t-mensal">
+      <thead><tr><th>Mês</th><th>Receita R$</th><th>Var. mesmo mês 2025</th><th>Margem</th><th>Markup</th></tr></thead><tbody></tbody></table></div>
+      <p class="cap" style="margin:10px 0 0">A variação compara o mesmo mês na <strong>base total da rede</strong> — no acumulado de oito meses ela é de +1,0%. Na <strong>base comparável</strong>, excluídas as unidades que operaram em 2025 e não operam em 2026, o acumulado cresce 5,9%. A diferença é o parque de lojas, não a operação.</p></details>
+  </div>
+  <div class="ins warn">
+    <span class="badge">Sazonalidade</span>
+    <div><h4>Dezembro vale quase um quinto do ano</h4>
+    <p>Dezembro de 2025 concentrou R$ 25,7 milhões — 17,6% de todo o exercício. É risco de execução e de capital de giro: um mês mal planejado compromete o ano inteiro, e o estoque para esse pico é comprado com três meses de antecedência.</p></div>
+  </div>
+</section>
+
+<!-- ===================== FILIAIS ===================== -->
+<section class="sheet" id="s-filiais" role="tabpanel">
+  <div class="shead"><h2>Filiais</h2><span class="tagx">20 unidades com venda</span></div>
+  <p class="snote">Receita acumulada de jan–ago por unidade. Clique em qualquer cabeçalho para reordenar.</p>
+  <div class="strip" id="st-fil"></div>
+  <div class="howto"><span class="ic">Como ler</span>
+    <span>Na barra, o trecho <b>laranja é agosto</b> e o azul é jan–jul. A faixa vermelha à esquerda da linha
+    marca as lojas com margem <b>abaixo dos 60,0% da rede</b>.
+    <b>Markup</b> é quanto o preço multiplica o custo de aquisição — a rede opera a 2,50x.
+    A variação contra 2025 vai até julho: agosto de 2025 não veio aberto por filial.</span></div>
+  <div class="card" style="padding-top:8px">
+    <div class="gridwrap"><table class="grid" id="g-fil">
+      <thead><tr>
+        <th data-c="0" data-t="s">Filial<span class="ar">▾</span></th>
+        <th data-c="1" class="bc">Receita jan–ago<span class="ar">▾</span></th>
+        <th data-c="1">R$<span class="ar">▾</span></th>
+        <th data-c="6">Share<span class="ar">▾</span></th>
+        <th data-c="2">Agosto<span class="ar">▾</span></th>
+        <th data-c="3">Margem<span class="ar">▾</span></th>
+        <th data-c="4">Markup<span class="ar">▾</span></th>
+        <th data-c="5">Δ R$ vs 2025<span class="ar">▾</span></th>
+      </tr></thead><tbody></tbody><tfoot></tfoot>
+    </table></div>
+  </div>
+  <div class="ins good"><span class="badge">Destaque</span>
+    <div><h4>A filial 22 passou de R$ 12,8 milhões</h4>
+    <p>Maior unidade da rede, acumula R$ 12,87 milhões com margem de 61,6% e fez R$ 1,90 milhão só em agosto. Sozinha representa 16,4% do faturamento do grupo.</p></div></div>
+  <div class="ins bad"><span class="badge">Atenção</span>
+    <div><h4>A filial 39 derreteu a margem em agosto</h4>
+    <p>Fechou o mês com 21,2% de margem — contra 29,0% no acumulado e 60,0% da rede. Markup de 1,27x em agosto. Se é outlet, precisa ser classificada como tal e sair da comparação; se não é, há um problema de precificação ou de custo que exige diagnóstico imediato.</p></div></div>
+  <div class="ins warn"><span class="badge">Concentração</span>
+    <div><h4>Cinco lojas fazem 52,5% da rede</h4>
+    <p>As filiais 22, 06, 01, 29 e 11 somam R$ 41,05 milhões — mais da metade do faturamento. As onze menores juntas somam R$ 16,3 milhões, menos de 40% do que as cinco maiores. Qualquer plano de recuperação de volume tem que começar pelas cinco primeiras, porque é lá que um ponto percentual vale dinheiro.</p></div></div>
+</section>
+
+<!-- ===================== SORTIMENTO ===================== -->
+<section class="sheet" id="s-sortimento" role="tabpanel">
+  <div class="shead"><h2>Sortimento</h2><span class="tagx">7.847 SKUs com venda</span></div>
+  <p class="snote">Classe A concentra a receita até 80% do acumulado, B até 95%, C o restante.</p>
+  <div class="card">
+    <h3>Concentração</h3>
+    <p class="cap">Participação no sortimento contra participação na receita. A distância entre as duas barras é a medida da concentração: 23,4% dos SKUs fazem 80% da receita.</p>
+    <div class="chart"><svg id="c-abc" viewBox="0 0 880 230" role="img" aria-label="Participação no sortimento contra participação na receita por classe ABC"></svg></div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <h3>Números do período</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>Indicador</th><th>jan–ago</th><th>jan–jul</th></tr></thead>
+        <tbody>
+          <tr><td>SKUs com venda</td><td>7.847</td><td>7.480</td></tr>
+          <tr><td>Classe A — SKUs</td><td>1.834</td><td>1.756</td></tr>
+          <tr><td>Classe A — margem</td><td>61,7%</td><td>61,9%</td></tr>
+          <tr><td>Classe C — SKUs</td><td>4.475</td><td>4.253</td></tr>
+          <tr><td>Classe C — margem</td><td>45,6%</td><td>45,6%</td></tr>
+          <tr><td>SKUs p/ 50% da receita</td><td>638</td><td>623</td></tr>
+          <tr><td>Marcas p/ 80% da receita</td><td>23 de 117</td><td>23 de 116</td></tr>
+          <tr class="tot"><td>SKUs improdutivos</td><td>3.914</td><td>3.788</td></tr>
+          <tr><td>— % do sortimento</td><td>49,9%</td><td>50,6%</td></tr>
+          <tr><td>— % da receita</td><td>2,9%</td><td>3,1%</td></tr>
+          <tr><td>— CMV vendido</td><td>R$ 1,46 mi</td><td>R$ 1,33 mi</td></tr>
+        </tbody></table></div>
+    </div>
+    <div class="card">
+      <h3>O que cada classe entrega</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>Classe</th><th>SKUs</th><th>% receita</th><th>Margem</th><th>Markup</th></tr></thead>
+        <tbody>
+          <tr><td>A</td><td>1.834</td><td>80,0%</td><td>61,7%</td><td>2,61x</td></tr>
+          <tr><td>B</td><td>1.538</td><td>15,0%</td><td>55,4%</td><td>2,24x</td></tr>
+          <tr><td>C</td><td>4.475</td><td>5,0%</td><td>45,6%</td><td>1,84x</td></tr>
+          <tr class="tot"><td>Rede</td><td>7.847</td><td>100%</td><td>60,0%</td><td>2,50x</td></tr>
+        </tbody></table></div>
+      <p style="margin:12px 0 14px; font-size:13.5px; color:var(--ink-2)">A classe C vende a <strong>70% do markup da classe A</strong>. Essa diferença é a assinatura da remarcação que já aconteceu — sem calendário, sem verba e sem medição.</p>
+      <h3 style="margin-top:18px">O que isso pede</h3>
+      <ul class="lst">
+        <li><strong>Escada de remarcação formal</strong> para a classe C: 20% / 40% / 60% por idade de SKU, com verba e data, em vez de desconto no caixa.</li>
+        <li><strong>Teto de sortimento</strong> na compra: a cauda cresceu de 3.788 para 3.914 SKUs em um mês. Sem limite de referências por coleção, ela se realimenta.</li>
+        <li><strong>Posição de estoque por SKU</strong> — é o dado que falta para medir capital parado, giro e cobertura. Sem ele, só enxergamos o que saiu.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ins bad">
+    <span class="badge">Cauda</span>
+    <div><h4>A cauda improdutiva cresceu, não encolheu</h4>
+    <p>Passou de 3.788 para 3.914 SKUs e o CMV associado subiu de R$ 1,33 para R$ 1,46 milhão. Sem plano de liquidação, a cauda se alimenta sozinha: cada coleção deixa resíduo e nada sai. FEMININO (1.190 SKUs) e GRENDENE (959) concentram mais da metade do grupo.</p></div>
+  </div>
+  <div class="ins warn">
+    <span class="badge">Limite</span>
+    <div><h4>Isto é CMV vendido, não estoque</h4>
+    <p>O R$ 1,46 milhão é o custo das peças que saíram, não o capital parado na prateleira. O valor real do estoque improdutivo só aparece com a posição de estoque por SKU, que continua pendente de extração.</p></div>
+  </div>
+</section>
+
+<!-- ===================== MARCAS ===================== -->
+<section class="sheet" id="s-marcas" role="tabpanel">
+  <div class="shead"><h2>Marcas</h2><span class="tagx">117 ativas · 14 maiores</span></div>
+  <p class="snote">As quatorze marcas que concentram o faturamento, com margem e markup realizados. Ordenável por qualquer coluna.</p>
+  <div class="strip" id="st-mar"></div>
+  <div class="howto"><span class="ic">Como ler</span>
+    <span>Markup abaixo de <b>2,50x</b> significa que a marca vende com margem inferior à da rede — parte é custo de aquisição, parte é desconto. A faixa vermelha marca essas linhas.</span></div>
+  <div class="card" style="padding-top:8px">
+    <div class="gridwrap"><table class="grid" id="g-mar">
+      <thead><tr>
+        <th data-c="0" data-t="s">Marca<span class="ar">▾</span></th>
+        <th data-c="1" class="bc">Receita jan–ago<span class="ar">▾</span></th>
+        <th data-c="1">R$<span class="ar">▾</span></th>
+        <th data-c="3">Share<span class="ar">▾</span></th>
+        <th data-c="2">Margem<span class="ar">▾</span></th>
+        <th data-c="4">Markup<span class="ar">▾</span></th>
+      </tr></thead><tbody></tbody><tfoot></tfoot>
+    </table></div>
+  </div>
+  <div class="ins warn"><span class="badge">Concentração</span>
+    <div><h4>OLYMPIKUS chegou a 16,4% da receita</h4>
+    <p>R$ 12,84 milhões no acumulado, crescimento de 21,8% — era 16,2% em julho. As filiais 26 e 37 operam com 77,4% e 74,4% do faturamento concentrados nessa única marca. A exposição a um fornecedor segue subindo sem teto definido.</p></div></div>
+  <div class="ins bad"><span class="badge">Margem</span>
+    <div><h4>FILA entrou no top 10 pela porta de baixo</h4>
+    <p>R$ 2,33 milhões acumulados com markup de 2,21x — bem abaixo dos 2,50x da rede. Junto com ZAXY (2,12x), são as duas marcas relevantes que mais diluem a margem. O avanço no segmento esportivo está vindo com margem menor, e isso precisa ser uma escolha consciente, não um efeito colateral.</p></div></div>
+</section>
+
+<!-- ===================== MIX ===================== -->
+<section class="sheet" id="s-mix" role="tabpanel">
+  <div class="shead"><h2>Mix por departamento</h2><span class="tagx">9 departamentos</span></div>
+  <p class="snote">Participação, crescimento e markup de cada departamento no acumulado de oito meses.</p>
+  <div class="strip" id="st-dep"></div>
+  <div class="howto"><span class="ic">Como ler</span>
+    <span>Crescer com <b>peças em alta</b> é ganho de demanda; crescer só em receita é ganho de preço. FEMININO é o único bloco grande que cresce pelo lado certo.</span></div>
+  <div class="card" style="padding-top:8px">
+    <div class="gridwrap"><table class="grid" id="g-dep">
+      <thead><tr>
+        <th data-c="0" data-t="s">Departamento<span class="ar">▾</span></th>
+        <th data-c="1" class="bc">Receita jan–ago<span class="ar">▾</span></th>
+        <th data-c="1">R$<span class="ar">▾</span></th>
+        <th data-c="3">Share<span class="ar">▾</span></th>
+        <th data-c="5">Var. 2025<span class="ar">▾</span></th>
+        <th data-c="2">Margem<span class="ar">▾</span></th>
+        <th data-c="4">Markup<span class="ar">▾</span></th>
+      </tr></thead><tbody></tbody><tfoot></tfoot>
+    </table></div>
+  </div>
+  <div class="ins good"><span class="badge">Modelo</span>
+    <div><h4>FEMININO cresce por volume — e é o maior departamento</h4>
+    <p>33,0% da receita, +4,0% no acumulado com <strong>+7,0% em peças</strong>. É o único bloco grande que ganha vendendo mais, não cobrando mais. O que funciona ali é o que deve ser replicado.</p></div></div>
+  <div class="ins bad"><span class="badge">Perda real</span>
+    <div><h4>MASCULINO e UNISSEX perderam R$ 2,04 milhões</h4>
+    <p>MASCULINO caiu 8,7% em receita e 12,4% em peças; UNISSEX, 21,4% e 23,8%. Em nenhum dos dois houve compensação de preço: é demanda que saiu da loja. Juntos representam 16,3% do faturamento e são a maior sangria do mix.</p></div></div>
+  <div class="ins warn"><span class="badge">Dependência</span>
+    <div><h4>ESPORTIVO cresce 5,1% com margem em queda</h4>
+    <p>Segundo maior departamento, 26,8% da receita, mas o markup caiu para 2,37x — abaixo da rede. É onde a aposta no esportivo está sendo feita, e onde a margem está sendo paga por ela.</p></div></div>
+</section>
+
+<!-- ===================== MARKUP ===================== -->
+<section class="sheet" id="s-markup" role="tabpanel">
+  <div class="shead"><h2>Markup e descontos</h2><span class="tagx">Leitura de compra e preço</span></div>
+  <p class="snote">Markup é a margem vista do lado de quem compra: quanto o preço multiplica o custo de aquisição. A rede opera a <strong>2,50x</strong>. É também onde o desconto deixa rastro.</p>
+  <div class="kpis" style="grid-template-columns:repeat(4,1fr)">
+    <div class="kpi"><div class="k">Markup da rede</div><div class="v">2,50x</div><div class="h" style="margin-top:6px">margem 60,0%</div></div>
+    <div class="kpi"><div class="k">Classe A</div><div class="v" style="color:var(--pos)">2,61x</div><div class="h" style="margin-top:6px">1.834 SKUs · 80% da receita</div></div>
+    <div class="kpi"><div class="k">Classe C</div><div class="v" style="color:var(--neg)">1,84x</div><div class="h" style="margin-top:6px">4.475 SKUs · 5% da receita</div></div>
+    <div class="kpi"><div class="k">Pior markup da rede</div><div class="v" style="color:var(--neg)">1,27x</div><div class="h" style="margin-top:6px">filial 39 em agosto</div></div>
+  </div>
+  <div class="card">
+    <h3>Markup realizado por departamento</h3>
+    <p class="cap">A linha tracejada marca o markup da rede. Barras em laranja operam abaixo dela.</p>
+    <div class="chart"><svg id="c-mkdep" viewBox="0 0 900 340" role="img" aria-label="Markup realizado por departamento contra o markup médio da rede"></svg></div>
+  </div>
+  <div class="ins warn">
+    <span class="badge">Sobre descontos</span>
+    <div><h4>A base não registra desconto — o markup é o único rastro</h4>
+    <p>Não existe campo de desconto nem preço de tabela em nenhuma das duas extrações: cada linha traz apenas o valor realizado. <strong>Todo desconto concedido já está dentro da margem de 60,0%</strong>, invisível e não gerenciável. Onde o markup cai, parte é custo de aquisição e parte é desconto — e não há como separar sem o campo. A especificação enviada ao TI pede <em>valor bruto do item</em> e <em>desconto aplicado</em> exatamente para isso.</p></div>
+  </div>
+  <div class="ins bad">
+    <span class="badge">Remarcação</span>
+    <div><h4>A classe C sai a 70% do markup da classe A</h4>
+    <p>2,61x contra 1,84x. Essa diferença de 29% é a assinatura da liquidação que já aconteceu — sem calendário, sem verba aprovada e sem medição. É desconto dado no varejo do dia a dia, não markdown planejado.</p></div>
+  </div>
+</section>
+
+<!-- ===================== MARGEM DE CONTRIBUIÇÃO ===================== -->
+<section class="sheet" id="s-margem" role="tabpanel">
+  <div class="shead"><h2>Margem de contribuição</h2><span class="tagx">Modelo, não apuração</span></div>
+  <p class="snote">A margem de 60,0% deste painel é <strong>comercial</strong>: preço contra custo de aquisição. A que sustenta decisão de preço desce até depois dos impostos e da despesa variável de venda. A ponte usa as alíquotas efetivas do estudo de Reforma Tributária (PT 01/2026).</p>
+  <div class="card">
+    <h3>Da receita bruta à margem de contribuição</h3>
+    <p class="cap">Por R$ 100 de receita bruta. PIS/COFINS 8,92%, ICMS devido na saída 3,47%, ICMS antecipado equivalente a 30,5% do CMV (AL 29,4% · SE 47,8%).</p>
+    <div class="tbl"><table class="bridge"><tbody>
+      <tr><td>Receita bruta</td><td class="n" style="text-align:right">100,00</td><td class="mut" style="text-align:right">100,0%</td></tr>
+      <tr class="ded"><td>(−) PIS/COFINS, líquido de créditos</td><td style="text-align:right">−8,92</td><td class="mut" style="text-align:right">8,9%</td></tr>
+      <tr class="ded"><td>(−) ICMS devido na saída</td><td style="text-align:right">−3,47</td><td class="mut" style="text-align:right">3,5%</td></tr>
+      <tr class="sub"><td>= Receita líquida</td><td style="text-align:right">87,61</td><td class="mut" style="text-align:right">87,6%</td></tr>
+      <tr class="ded"><td>(−) CMV Seta (markup 2,50x)</td><td style="text-align:right">−40,00</td><td class="mut" style="text-align:right">40,0%</td></tr>
+      <tr class="ded"><td>(−) ICMS antecipado <span class="mut" id="b-lbl">— cenário DRE</span></td><td style="text-align:right" id="b-ant">−12,20</td><td class="mut" style="text-align:right" id="b-ant2">12,2%</td></tr>
+      <tr class="tot"><td>= Margem bruta após impostos</td><td style="text-align:right" id="b-mb">43,10</td><td style="text-align:right" id="b-mb2">43,1%</td></tr>
+      <tr class="ded"><td>(−) Comissão sobre venda</td><td style="text-align:right" id="b-com">−2,00</td><td class="mut" style="text-align:right">parâmetro</td></tr>
+      <tr class="ded"><td>(−) Taxa de adquirência</td><td style="text-align:right" id="b-adq">−2,00</td><td class="mut" style="text-align:right">parâmetro</td></tr>
+      <tr class="tot"><td>= Margem de contribuição</td><td style="text-align:right" id="b-mc">39,10</td><td style="text-align:right" id="b-mc2">39,1%</td></tr>
+    </tbody></table></div>
+    <div class="calc" style="margin-top:18px">
+      <div>
+        <h3 style="font-size:15px">Os dois parâmetros que faltam</h3>
+        <p style="font-size:13.5px; color:var(--ink-2); margin:0 0 10px">Comissão e taxa de cartão não existem em nenhuma das bases. A faixa usual do varejo de calçados põe a comissão entre 1,5% e 3% e a adquirência entre 1,5% e 2,5% da receita bruta, mas <strong>os percentuais da ABYS precisam ser confirmados</strong> — a tabela de comissionamento e o extrato das adquirentes resolvem em um dia.</p>
+        <p style="font-size:13.5px; color:var(--ink-2); margin:0 0 14px">Com 30,2% das vendas à vista, a taxa média ponderada tende à parte alta da faixa: parcelado custa mais que débito.</p>
+        <div class="tbl"><table>
+          <thead><tr><th>Cenário</th><th>MB pós-impostos</th><th>MC a 2%+2%</th><th>No YTD</th></tr></thead>
+          <tbody>
+            <tr><td>A · antecipação fora do custo</td><td>35,4%</td><td>31,4%</td><td>R$ 24,6 mi</td></tr>
+            <tr class="tot"><td>DRE · carregamento parcial</td><td>43,1%</td><td>39,1%</td><td>R$ 30,6 mi</td></tr>
+            <tr><td>B · antecipação já no custo</td><td>47,6%</td><td>43,6%</td><td>R$ 34,1 mi</td></tr>
+          </tbody></table></div>
+        <p style="margin:10px 0 18px; font-size:12.5px; color:var(--ink-3)">A amplitude entre A e B — R$ 9,55 milhões — é a maior incerteza aberta deste painel.</p>
+        <h3>Sensibilidade · quanto vale cada alavanca</h3>
+        <p class="cap">Impacto sobre a margem de contribuição do acumulado de R$ 78,25 milhões, mantido tudo o mais constante.</p>
+        <div class="tbl"><table>
+          <thead><tr><th>Alavanca</th><th>Movimento</th><th>Em pontos</th><th>No YTD</th></tr></thead>
+          <tbody>
+            <tr><td>Markup de aquisição</td><td>2,50x → 2,60x</td><td>+1,5 pp</td><td>+R$ 1,20 mi</td></tr>
+            <tr><td>Markup de aquisição</td><td>2,50x → 2,40x</td><td>−1,7 pp</td><td>−R$ 1,31 mi</td></tr>
+            <tr><td>Comissão sobre venda</td><td>2,0% → 3,0%</td><td>−1,0 pp</td><td>−R$ 0,78 mi</td></tr>
+            <tr><td>Taxa de adquirência</td><td>2,0% → 1,5%</td><td>+0,5 pp</td><td>+R$ 0,39 mi</td></tr>
+          </tbody></table></div>
+        <p style="margin:10px 0 0; font-size:12.5px; color:var(--ink-3)">Um décimo de markup vale mais que um ponto inteiro de comissão: a negociação de compra é a alavanca de maior retorno por hora investida.</p>
+      </div>
+      <div class="ctrl">
+        <h5>Cenário do ICMS antecipado</h5>
+        <p class="hint">Onde a antecipação está registrada</p>
+        <div class="segs" role="group" aria-label="Cenário">
+          <button type="button" data-sc="a" aria-pressed="false">A · fora</button>
+          <button type="button" data-sc="dre" aria-pressed="true">DRE</button>
+          <button type="button" data-sc="b" aria-pressed="false">B · dentro</button>
+        </div>
+        <div class="fld"><label for="i-com">Comissão <b><span id="v-com">2,0</span>%</b></label>
+          <input type="range" id="i-com" min="0" max="5" step="0.1" value="2"></div>
+        <div class="fld"><label for="i-adq">Adquirência <b><span id="v-adq">2,0</span>%</b></label>
+          <input type="range" id="i-adq" min="0" max="5" step="0.1" value="2"></div>
+        <div class="out">
+          <div class="k">Margem de contribuição</div>
+          <div class="v"><span id="o-pct">39,1</span>%</div>
+          <div class="s">da receita bruta · <span id="o-rl">44,6</span>% da líquida</div>
+          <hr>
+          <div class="k">No YTD de R$ 78,25 mi</div>
+          <div class="v" style="font-size:24px">R$ <span id="o-rs">30,6</span> mi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ins bad">
+    <span class="badge">Questão aberta</span>
+    <div><h4>Não se sabe se o ICMS antecipado já está no custo do Seta — e isso vale R$ 9,5 milhões</h4>
+    <p>Em Alagoas e Sergipe, 83% do ICMS é recolhido por antecipação na entrada, sem gerar crédito: é custo definitivo, equivalente a 30,5% do CMV. Se <strong>não</strong> estiver no custo do Seta, a margem bruta pós-impostos é 35,4% da receita bruta; se <strong>estiver</strong>, é 47,6%. São 12,2 pontos — <strong>R$ 9,55 milhões sobre o acumulado</strong>. Resolve-se conferindo a composição do custo de uma nota de entrada contra o cadastro do produto.</p></div>
+  </div>
+  <div class="ins warn">
+    <span class="badge">Âncora</span>
+    <div><h4>A DRE aponta um ponto intermediário</h4>
+    <p>O CMV sobre receita líquida da DRE gerencial é de 50,8% no acumulado de agosto. O cenário A implicaria 59,3% e o B, 45,7%. O contábil fica no meio, o que sugere carregamento parcial da antecipação — por isso o cenário central da calculadora é o ancorado na DRE. A conciliação formal entre custo Seta e CMV contábil é o que transforma este modelo em apuração.</p></div>
+  </div>
+</section>
+
+<!-- ===================== RESSALVAS ===================== -->
+<section class="sheet" id="s-ressalvas" role="tabpanel">
+  <div class="shead"><h2>Ressalvas</h2><span class="tagx">Leia antes de decidir</span></div>
+  <p class="snote">O que esta base permite afirmar e o que não permite.</p>
+  <div class="g2">
+    <div class="card"><h3>A margem de 60,0% não é margem de contribuição</h3>
+      <p class="cap" style="margin:0">É margem comercial sobre custo de aquisição, e o custo do Seta é bruto de PIS/COFINS enquanto o custo contábil é líquido. As duas não são diretamente comparáveis. Nenhuma decisão de precificação deve se apoiar nela.</p></div>
+    <div class="card"><h3>A base não mede comportamento de compra</h3>
+      <p class="cap" style="margin:0">Não há data da venda, cupom, vendedor nem cliente. Ticket médio por venda, peças por atendimento, conversão e recorrência continuam fora de alcance. Todas as métricas aqui são por item vendido.</p></div>
+    <div class="card"><h3>Não há posição de estoque</h3>
+      <p class="cap" style="margin:0">Sem ela não existem giro, cobertura, GMROI, sell-through, aging nem ruptura de grade. O capital parado na cauda improdutiva é estimado pelo CMV vendido, não medido.</p></div>
+    <div class="card"><h3>Tratamentos e períodos</h3>
+      <p class="cap" style="margin:0">Devoluções estão embutidas como valores negativos (R$ 1,16 mi no acumulado) e os números já são líquidos delas. 179 linhas têm custo zero com receita positiva em 2026. As alíquotas tributárias vêm do baseline de 2025 aplicadas sobre vendas de 2026.</p></div>
+  </div>
+  <div class="ins">
+    <span class="badge">Fontes</span>
+    <div><h4>Bases que alimentam este painel</h4>
+    <p><strong>vendas_detalhado_20260826_150510.csv</strong> — jan/2025 a jul/2026, 1.077.991 linhas. <strong>vendas_detalhado_20260926_102310.csv</strong> — ago/2026, 55.904 linhas, conferido contra a BD 08/2026 loja a loja (R$ 10.902.551,99 de faturamento, R$ 4.392.148,43 de custo, 86.873 peças, diferença zero). Parâmetros tributários do PT 01/2026 v2.2. A variação por filial contra 2025 está disponível até julho: agosto de 2025 não foi aberto por unidade nesta base.</p></div>
+  </div>
+  <div class="ins brand">
+    <span class="badge">Identidade</span>
+    <div><h4>Cores derivadas de fotografia, não de manual de marca</h4>
+    <p>O laranja <strong>#FF6600</strong> usado neste painel foi medido em fotografias da fachada e do interior das lojas — matiz entre 16° e 29°, saturação plena, convergindo nesse valor. O site institucional não está acessível para consulta automatizada. Se existir manual de marca com os valores oficiais, vale substituir.</p></div>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="wrap">
+  <b>ABYS Modas</b> · Painel de vendas · acumulado jan–ago 2026<br>
+  Elaborado por <b>ACCEX Contadores e Consultores</b> — CFO as a Service · emissão 09/10/2026<br>
+  Documento de trabalho para uso interno. Números sujeitos às ressalvas desta aba.
+</div></footer>
+
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script>
+const F=n=>new Intl.NumberFormat('pt-BR',{maximumFractionDigits:0}).format(n);
+const FM=n=>(n<0?'−':'')+'R$ '+F(Math.abs(n));
+const FMi=n=>(n<0?'−':'')+'R$ '+(Math.abs(n)/1e6).toFixed(2).replace('.',',')+' mi';
+const NS='http://www.w3.org/2000/svg';
+const cs=k=>getComputedStyle(document.documentElement).getPropertyValue(k).trim();
+const nf=(v,d)=>v.toFixed(d===undefined?2:d).replace('.',',').replace(/^-/,'−');
+const tip=document.getElementById('tip');
+function bind(el,html){
+  el.addEventListener('mousemove',e=>{tip.innerHTML=html;tip.style.opacity=1;
+    const w=tip.offsetWidth,h=tip.offsetHeight;
+    tip.style.left=Math.min(e.clientX+14,innerWidth-w-10)+'px';
+    tip.style.top=Math.max(e.clientY-h-12,8)+'px';});
+  el.addEventListener('mouseleave',()=>tip.style.opacity=0);
+}
+function mk(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+function txt(x,y,s,c,an,w){const t=mk('text',{x,y,class:c||'ax','text-anchor':an||'start'});
+  if(w)t.setAttribute('font-weight',w);t.textContent=s;return t;}
+function barPath(x,y,w,h,r,side){
+  r=Math.min(r,Math.abs(w)/2,Math.abs(h)/2);
+  if(side==='top')  return `M${x},${y+h} L${x},${y+r} Q${x},${y} ${x+r},${y} L${x+w-r},${y} Q${x+w},${y} ${x+w},${y+r} L${x+w},${y+h} Z`;
+  if(side==='right')return `M${x},${y} L${x+w-r},${y} Q${x+w},${y} ${x+w},${y+r} L${x+w},${y+h-r} Q${x+w},${y+h} ${x+w-r},${y+h} L${x},${y+h} Z`;
+  if(side==='left') return `M${x+w},${y} L${x+r},${y} Q${x},${y} ${x},${y+r} L${x},${y+h-r} Q${x},${y+h} ${x+r},${y+h} L${x+w},${y+h} Z`;
+  return `M${x},${y} h${w} v${h} h${-w} Z`;
+}
+
+/* ===== DADOS jan–ago 2026 ===== */
+const MEN=[[202501,9202668,58.4],[202502,8328010,59.8],[202503,7778309,56.2],[202504,8538911,58.7],
+[202505,11710785,60.4],[202506,11982871,60.6],[202507,9389680,57.3],[202508,10519041,59.4],
+[202509,9440814,59.3],[202510,10863391,60.8],[202511,12843327,59.4],[202512,25728784,62.7],
+[202601,9799598,59.5],[202602,7814016,59.4],[202603,8380003,59.1],[202604,8603708,58.3],
+[202605,11867705,61.9],[202606,11815781,62.0],[202607,9067170,59.2],[202608,10902552,59.7]];
+const FIL=[["22",12871978,1902472,61.6,2.60,1742828],["06",8805638,1306885,61.1,2.57,-882102],
+["01",6960207,929934,58.0,2.38,-190501],["29",6339557,924383,61.8,2.62,71208],
+["11",6069767,797601,58.4,2.41,371843],["16",5904864,822027,58.9,2.43,336497],
+["21",5696488,719471,63.4,2.73,515118],["13",4699557,599033,66.1,2.95,468908],
+["09",4577864,573405,59.1,2.44,-114356],["07",2940817,447451,61.8,2.62,-58604],
+["05",2810428,370337,58.9,2.43,202869],["36",2673766,387950,58.4,2.40,211827],
+["43",2589324,379736,57.2,2.34,286753],["14",1514276,246214,69.1,3.24,-1956220],
+["39",1256490,183493,29.0,1.41,80165],["26",1232271,143900,51.2,2.05,510235],
+["38",715228,62033,55.8,2.26,-251371],["37",435817,25043,49.3,1.97,410774],
+["40",125800,81185,64.3,2.80,-269170],["20",30399,0,49.8,1.99,-6692]];
+const DEP=[["FEMININO",25816376,60.2,33.0,2.51,4.0],["ESPORTIVO",20938844,57.7,26.8,2.37,5.1],
+["GRENDENE",10232231,57.8,13.1,2.37,8.8],["MASCULINO",8068112,63.2,10.3,2.72,-8.7],
+["UNISSEX",4701819,62.2,6.0,2.65,-21.4],["INFANTIL",4273282,61.4,5.5,2.59,-3.6],
+["ACESSÓRIO",2576505,69.3,3.3,3.25,-11.0],["BABY",1060221,61.5,1.4,2.59,2.3],
+["CONFECÇÕES",583143,63.4,0.7,2.73,null]];
+const MAR=[["OLYMPIKUS",12844863,59.8,16.4,2.49],["MODARE",4949678,64.8,6.3,2.84],
+["VIZZANO",3816050,60.0,4.9,2.50],["PEGADA",3430431,64.0,4.4,2.78],
+["DEMOCRATA",3316159,63.3,4.2,2.72],["BEIRA RIO",3199231,61.7,4.1,2.61],
+["MOLECA",3163127,62.7,4.0,2.68],["CARTAGO",2795655,64.0,3.6,2.78],
+["FILA",2330170,54.8,3.0,2.21],["KENNER",2236795,62.1,2.9,2.64],
+["MISSISSIPI",2176096,60.1,2.8,2.51],["ZAXY",2027852,52.7,2.6,2.12],
+["NIKE",2022618,57.8,2.6,2.37],["RIDER",1368905,61.8,1.7,2.62]];
+const MK_REDE=2.50;
+
+/* ===== sparklines ===== */
+function spark(id,vals,color){
+  const s=document.getElementById(id); if(!s) return; s.innerHTML='';
+  const W=260,H=30,P=3,mn=Math.min(...vals),mx=Math.max(...vals),rg=(mx-mn)||1;
+  const X=i=>P+i*(W-2*P)/(vals.length-1), Y=v=>H-P-(v-mn)/rg*(H-2*P);
+  let d=''; vals.forEach((v,i)=>{d+=(i?' L':'M')+X(i).toFixed(1)+','+Y(v).toFixed(1);});
+  const gid=id+'-g', defs=mk('defs',{}), lg=mk('linearGradient',{id:gid,x1:0,y1:0,x2:0,y2:1});
+  lg.appendChild(mk('stop',{offset:'0%','stop-color':color,'stop-opacity':.25}));
+  lg.appendChild(mk('stop',{offset:'100%','stop-color':color,'stop-opacity':0}));
+  defs.appendChild(lg); s.appendChild(defs);
+  s.appendChild(mk('path',{d:d+` L${X(vals.length-1)},${H} L${X(0)},${H} Z`,fill:`url(#${gid})`}));
+  s.appendChild(mk('path',{d,fill:'none',stroke:color,'stroke-width':2,'stroke-linejoin':'round','vector-effect':'non-scaling-stroke'}));
+  s.appendChild(mk('circle',{cx:X(vals.length-1),cy:Y(vals[vals.length-1]),r:2.4,fill:color}));
+}
+
+/* ===== ponte ===== */
+function ponte(){
+  const s=document.getElementById('c-ponte'); s.innerHTML='';
+  const W=900,L=84,R=24,T=32,B=50,pw=W-L-R,ph=290-T-B;
+  const st=[['Receita 2025',77450276,'t'],['Efeito volume',-2770000,'d'],['Efeito preço',3570000,'d'],['Receita 2026',78250533,'t']];
+  const min=74000000,max=80000000,Y=v=>T+ph-(v-min)/(max-min)*ph;
+  for(let g=min;g<=max;g+=1000000){
+    s.appendChild(mk('line',{x1:L,x2:W-R,y1:Y(g),y2:Y(g),class:'gl'}));
+    s.appendChild(txt(L-10,Y(g)+4,(g/1e6).toFixed(0)+' mi','ax','end'));
+  }
+  const bw=pw/4,iw=Math.min(118,bw*.56); let run=0;
+  st.forEach((d,i)=>{
+    const cx=L+bw*i+bw/2,x=cx-iw/2; let y0,y1,fill;
+    if(d[2]==='t'){y0=Y(d[1]);y1=Y(min);fill=cs('--s1');run=d[1];}
+    else{const f=run,t=run+d[1];run=t;y0=Y(Math.max(f,t));y1=Y(Math.min(f,t));
+      fill=d[1]>0?cs('--pos'):cs('--neg');
+      s.appendChild(mk('line',{x1:x-bw*.42,x2:x,y1:Y(f),y2:Y(f),stroke:cs('--rule-2'),'stroke-width':1.5,'stroke-dasharray':'2 4'}));}
+    const p=mk('path',{d:barPath(x,y0,iw,y1-y0,6,'top'),fill,class:'mk'});
+    bind(p,`<b>${d[0]}</b>${d[2]==='t'?FM(d[1]):(d[1]>0?'+':'−')+'R$ '+F(Math.abs(d[1]))}`);
+    s.appendChild(p);
+    const lv=d[2]==='t'?FMi(d[1]):(d[1]>0?'+':'−')+'R$ '+(Math.abs(d[1])/1e6).toFixed(2).replace('.',',')+' mi';
+    const t=txt(cx,y0-10,lv,'axv','middle',700); t.setAttribute('font-size','12'); s.appendChild(t);
+    s.appendChild(txt(cx,290-28,d[0],'ax','middle'));
+  });
+  s.appendChild(txt(L,290-6,'Receita acumulada jan–ago, R$ · escala truncada em R$ 74 mi','ax','start'));
+}
+
+/* ===== mensal ===== */
+function mensal(){
+  const s=document.getElementById('c-mensal'); s.innerHTML='';
+  const W=900,L=70,R=18,T=28,B=52,pw=W-L-R,ph=300-T-B,max=27000000,Y=v=>T+ph-v/max*ph;
+  for(let g=0;g<=25000000;g+=5000000){
+    s.appendChild(mk('line',{x1:L,x2:W-R,y1:Y(g),y2:Y(g),class:g===0?'zl':'gl'}));
+    s.appendChild(txt(L-10,Y(g)+4,g===0?'0':(g/1e6)+' mi','ax','end'));
+  }
+  const bw=pw/MEN.length,iw=bw-6;
+  MEN.forEach((d,i)=>{
+    const an=String(d[0]).slice(0,4),me=String(d[0]).slice(4);
+    const x=L+bw*i+3,y=Y(d[1]);
+    const p=mk('path',{d:barPath(x,y,iw,Y(0)-y,4,'top'),fill:an==='2025'?cs('--s1'):cs('--s2'),class:'mk'});
+    bind(p,`<b>${me}/${an}</b>Receita ${FM(d[1])}<br>Margem ${nf(d[2],1)}%<br>Markup ${nf(1/(1-d[2]/100))}x`);
+    s.appendChild(p);
+    if(d[0]===202512){const t=txt(x+iw/2,y-9,'R$ 25,7 mi','axv','middle',700);t.setAttribute('font-size','11');s.appendChild(t);}
+    if(d[0]===202608){const t=txt(x+iw/2,y-9,'ago','axv','middle',700);t.setAttribute('font-size','11');t.setAttribute('fill',cs('--s2'));s.appendChild(t);}
+    s.appendChild(txt(x+iw/2,300-32,me,'ax','middle'));
+    if(me==='01')s.appendChild(txt(x+iw/2,300-18,an,'axv','middle',700));
+  });
+  const tb=document.querySelector('#t-mensal tbody'); tb.innerHTML='';
+  const PV={}; MEN.forEach(d=>{if(d[0]<202600)PV[d[0]%100]=d[1];});
+  MEN.forEach(d=>{const tr=document.createElement('tr');
+    let v='<td>\u2014</td>';
+    if(d[0]>=202600&&PV[d[0]%100]){const g=(d[1]/PV[d[0]%100]-1)*100;
+      v='<td><span class="chip '+(g>=0?'g':'r')+'">'+(g>0?'+':'\u2212')+nf(Math.abs(g),1)+'%</span></td>';}
+    tr.innerHTML=`<td>${String(d[0]).slice(4)}/${String(d[0]).slice(0,4)}</td><td>${F(d[1])}</td>${v}<td>${nf(d[2],1)}%</td><td>${nf(1/(1-d[2]/100))}x</td>`;
+    tb.appendChild(tr);});
+}
+
+/* ===== grade de analise: motor generico ===== */
+const GRIDS={};
+const FS=n=>(n<0?'-':'')+F(Math.abs(n));
+function cBar(iT,iA){return (r,mx)=>{
+  const a=iA!==undefined?r[iA]:0, b=r[iT]-a;
+  return '<td class="bc"><span class="barw">'
+    +'<span class="bar" style="width:'+(b/mx*100).toFixed(2)+'%"></span>'
+    +(iA!==undefined&&a>0?'<span class="bar ago" style="width:'+(a/mx*100).toFixed(2)+'%"></span>':'')
+    +'</span></td>';};}
+function cName(i){return r=>'<td>'+r[i]+'</td>';}
+function cNum(i){return r=>'<td>'+FS(r[i])+'</td>';}
+function cPct(i,d){return r=>'<td>'+nf(r[i],d===undefined?1:d)+'%</td>';}
+function cChip(i,fmt,hi,lo){return r=>{const v=r[i];
+  if(v===null||v===undefined) return '<td><span class="chip n">—</span></td>';
+  return '<td><span class="chip '+(v>=hi?'g':(v>=lo?'n':'r'))+'">'+fmt(v)+'</span></td>';};}
+function cDelta(i){return r=>{const v=r[i];
+  if(v===null) return '<td>—</td>';
+  return '<td style="font-weight:700;color:var(--'+(v>=0?'pos':'neg')+')">'+(v>0?'+':'−')+F(Math.abs(v))+'</td>';};}
+function cVar(i){return r=>{const v=r[i];
+  if(v===null) return '<td><span class="chip n">novo</span></td>';
+  return '<td><span class="chip '+(v>=0?'g':'r')+'">'+(v>0?'+':'−')+nf(Math.abs(v),1)+'%</span></td>';};}
+
+function grid(id,rows,spec,opts){
+  const t=document.getElementById(id); if(!t) return;
+  if(!GRIDS[id]) GRIDS[id]={sc:opts.sc,dir:opts.dir};
+  const g=GRIDS[id]; g.rows=rows; g.spec=spec; g.opts=opts;
+  t.querySelectorAll('th[data-c]').forEach(th=>{
+    if(th.dataset.b) return; th.dataset.b='1';
+    th.setAttribute('tabindex','0'); th.setAttribute('role','button');
+    const go=()=>{const c=+th.dataset.c;
+      if(g.sc===c) g.dir=-g.dir; else {g.sc=c; g.dir=th.dataset.t==='s'?1:-1;}
+      paint(id);};
+    th.addEventListener('click',go);
+    th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+  });
+  paint(id);
+}
+function paint(id){
+  const g=GRIDS[id], t=document.getElementById(id);
+  t.querySelectorAll('th[data-c]').forEach(th=>{
+    const on=+th.dataset.c===g.sc;
+    th.classList.toggle('on',on);
+    const a=th.querySelector('.ar'); if(a) a.textContent=on?(g.dir>0?'▴':'▾'):'▾';
+  });
+  const rows=g.rows.slice().sort((p,q)=>{
+    let x=p[g.sc],y=q[g.sc];
+    if(typeof x==='string') return g.dir*x.localeCompare(y,'pt-BR');
+    if(x===null||x===undefined) x=-Infinity;
+    if(y===null||y===undefined) y=-Infinity;
+    return g.dir*(x-y);
+  });
+  const mx=Math.max.apply(null,g.rows.map(r=>r[g.opts.bar]));
+  const tb=t.tBodies[0]; tb.innerHTML='';
+  rows.forEach(r=>{
+    const tr=document.createElement('tr');
+    if(g.opts.low&&g.opts.low(r)) tr.className='low';
+    tr.innerHTML=g.spec.map(f=>f(r,mx)).join('');
+    tb.appendChild(tr);
+  });
+  const tf=t.tFoot; if(tf&&g.opts.foot) tf.innerHTML='<tr>'+g.opts.foot(g.rows)+'</tr>';
+}
+function strip(id,cells){
+  const el=document.getElementById(id); if(!el) return;
+  el.innerHTML=cells.map(c=>'<div><div class="k">'+c[0]+'</div><div class="v">'+c[1]
+    +'</div><div class="s">'+c[2]+'</div></div>').join('');
+}
+const MG_REDE=60.0;
+const Rmi=v=>'R$ '+(v/1e6).toFixed(2).replace('.',',')+' mi';
+const wm=(rows,ir,im)=>{const rc=rows.reduce((s,r)=>s+r[ir],0);
+  return (1-rows.reduce((s,r)=>s+r[ir]*(1-r[im]/100),0)/rc)*100;};
+
+/* ===== filiais ===== */
+function filial(){
+  const tot=FIL.reduce((s,r)=>s+r[1],0), ago=FIL.reduce((s,r)=>s+r[2],0);
+  FIL.forEach(r=>{r[6]=r[1]/tot*100;});
+  const ord=FIL.slice().sort((a,b)=>b[1]-a[1]);
+  const top5=ord.slice(0,5).reduce((s,r)=>s+r[1],0);
+  const bot11=ord.slice(-11).reduce((s,r)=>s+r[1],0);
+  const nlow=FIL.filter(r=>r[3]<MG_REDE).length;
+  const cmg=wm(FIL,1,3), dl=FIL.reduce((s,r)=>s+r[5],0);
+  strip('st-fil',[
+    ['Receita jan–ago',Rmi(tot),'20 unidades com venda'],
+    ['Cinco maiores',nf(top5/tot*100,1)+'%',Rmi(top5)],
+    ['Onze menores',nf(bot11/tot*100,1)+'%',Rmi(bot11)],
+    ['Abaixo da rede',nlow+' lojas','margem inferior a 60,0%']
+  ]);
+  grid('g-fil',FIL,[
+    cName(0), cBar(1,2), cNum(1), cPct(6),
+    cNum(2), cChip(3,v=>nf(v,1)+'%',MG_REDE,MG_REDE-2),
+    cChip(4,v=>nf(v)+'x',MK_REDE,MK_REDE-.15), cDelta(5)
+  ],{bar:1,sc:1,dir:-1,low:r=>r[3]<MG_REDE,
+    foot:()=>'<td>Rede · 20 lojas</td><td class="bc"></td><td>'+F(tot)
+      +'</td><td>100,0%</td><td>'+F(ago)+'</td><td>'+nf(cmg,1)+'%</td><td>'
+      +nf(1/(1-cmg/100))+'x</td><td>'+(dl>=0?'+':'−')+F(Math.abs(dl))+'</td>'});
+}
+
+/* ===== marcas ===== */
+function marca(){
+  const rc=MAR.reduce((s,r)=>s+r[1],0), shr=MAR.reduce((s,r)=>s+r[3],0);
+  const cmg=wm(MAR,1,2), nlow=MAR.filter(r=>r[4]<MK_REDE).length;
+  strip('st-mar',[
+    ['Quatorze maiores',Rmi(rc),nf(shr,1)+'% da receita da rede'],
+    ['Líder','OLYMPIKUS','16,4% · '+Rmi(MAR[0][1])],
+    ['Margem das 14',nf(cmg,1)+'%','markup '+nf(1/(1-cmg/100))+'x'],
+    ['Abaixo de 2,50x',nlow+' marcas','diluem a margem da rede']
+  ]);
+  grid('g-mar',MAR,[
+    cName(0), cBar(1), cNum(1), cPct(3),
+    cChip(2,v=>nf(v,1)+'%',MG_REDE,MG_REDE-2),
+    cChip(4,v=>nf(v)+'x',MK_REDE,MK_REDE-.15)
+  ],{bar:1,sc:1,dir:-1,low:r=>r[4]<MK_REDE,
+    foot:()=>'<td>Soma das 14</td><td class="bc"></td><td>'+F(rc)+'</td><td>'+nf(shr,1)
+      +'%</td><td>'+nf(cmg,1)+'%</td><td>'+nf(1/(1-cmg/100))+'x</td>'});
+}
+
+/* ===== departamentos ===== */
+function dep(){
+  const rc=DEP.reduce((s,r)=>s+r[1],0), cmg=wm(DEP,1,2);
+  const cai=DEP.filter(r=>r[5]!==null&&r[5]<0);
+  const lw=DEP.filter(r=>r[4]<MK_REDE);
+  strip('st-dep',[
+    ['Receita jan–ago',Rmi(rc),'9 departamentos'],
+    ['Maior bloco','FEMININO','33,0% · cresce +4,0%'],
+    ['Em queda',cai.length+' blocos',cai.map(r=>r[0]).join(' · ')],
+    ['Markup sob a régua',lw.length+' blocos',lw.map(r=>r[0]).join(' · ')]
+  ]);
+  grid('g-dep',DEP,[
+    cName(0), cBar(1), cNum(1), cPct(3), cVar(5),
+    cChip(2,v=>nf(v,1)+'%',MG_REDE,MG_REDE-2),
+    cChip(4,v=>nf(v)+'x',MK_REDE,MK_REDE-.15)
+  ],{bar:1,sc:1,dir:-1,low:r=>r[4]<MK_REDE,
+    foot:()=>'<td>Rede</td><td class="bc"></td><td>'+F(rc)+'</td><td>100,0%</td>'
+      +'<td><span class="chip g">+5,9%</span></td><td>'+nf(cmg,1)+'%</td><td>'
+      +nf(1/(1-cmg/100))+'x</td>'});
+}
+
+/* ===== ABC ===== */
+function abc(){
+  const s=document.getElementById('c-abc'); s.innerHTML='';
+  const W=880,L=112,R=24,T=20,bh=42,gap=48,pw=W-L-R;
+  const sets=[['Sortimento',[[23.4,'A'],[19.6,'B'],[57.0,'C']]],['Receita',[[80.0,'A'],[15.0,'B'],[5.0,'C']]]];
+  const col={A:cs('--abc1'),B:cs('--abc2'),C:cs('--abc3')};
+  sets.forEach((set,si)=>{
+    const y=T+si*(bh+gap); let x=L;
+    s.appendChild(txt(L-12,y+bh/2+5,set[0],'axv','end',700));
+    set[1].forEach((pt,pi)=>{
+      const seg=pw*pt[0]/100,w=seg-(pi<2?3:0);
+      const p=mk('path',{d:barPath(x,y,w,bh,pi===0?6:(pi===2?6:0),pi===0?'left':(pi===2?'right':'none')),fill:col[pt[1]],class:'mk'});
+      bind(p,`<b>Classe ${pt[1]} · ${set[0]}</b>${nf(pt[0],1)}%`); s.appendChild(p);
+      if(pt[0]>4){
+        const t=txt(x+seg/2,y+bh+15,nf(pt[0],1)+'%','axv','middle',700); t.setAttribute('font-size','12'); s.appendChild(t);
+        s.appendChild(txt(x+seg/2,y+bh+28,'classe '+pt[1],'ax','middle'));
+      }
+      x+=seg;
+    });
+  });
+  s.appendChild(txt(L,T+2*(bh+gap)+14,'Cada barra soma 100%. A = 1.834 SKUs · B = 1.538 · C = 4.475','ax','start'));
+}
+
+/* ===== markup por departamento ===== */
+function mkdep(){
+  const s=document.getElementById('c-mkdep'); s.innerHTML='';
+  const arr=[...DEP].sort((a,b)=>b[4]-a[4]);
+  const W=900,L=118,R=70,T=24,B=42,rh=30,H=T+arr.length*rh+B;
+  s.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const pw=W-L-R,min=1.0,max=3.45,X=v=>L+(v-min)/(max-min)*pw;
+  for(let g=1.0;g<=3.5;g+=.5){
+    s.appendChild(mk('line',{x1:X(g),x2:X(g),y1:T-6,y2:T+arr.length*rh,class:'gl'}));
+    s.appendChild(txt(X(g),H-22,nf(g,1)+'x','ax','middle'));
+  }
+  arr.forEach((d,i)=>{
+    const y=T+i*rh,h=rh-12,w=X(d[4])-L,acima=d[4]>=MK_REDE;
+    const p=mk('path',{d:barPath(L,y,w,h,3,'right'),fill:acima?cs('--s1'):cs('--s2'),class:'mk'});
+    bind(p,`<b>${d[0]}</b>Markup ${nf(d[4])}x<br>Margem ${nf(d[2],1)}%<br>Rede ${nf(MK_REDE)}x`);
+    s.appendChild(p);
+    s.appendChild(txt(L-9,y+h-3,d[0],'axv','end',700));
+    const t=acima?txt(X(d[4])+8,y+h-3,nf(d[4])+'x','ax','start',600)
+                 :txt(X(d[4])-8,y+h-3,nf(d[4])+'x','ax','end',700);
+    t.setAttribute('fill',acima?cs('--ink-2'):'#2A1409'); s.appendChild(t);   // texto escuro sobre laranja: 5,6:1
+  });
+  const xr=X(MK_REDE);
+  s.appendChild(mk('line',{x1:xr,x2:xr,y1:T-12,y2:T+arr.length*rh+4,stroke:cs('--ink'),'stroke-width':1.6,'stroke-dasharray':'5 4'}));
+  const lb=txt(xr,T-17,'rede 2,50x','axv','middle',700); lb.setAttribute('fill',cs('--ink')); s.appendChild(lb);
+  s.appendChild(txt(L,H-6,'Markup realizado = preço de venda ÷ custo de aquisição','ax','start'));
+}
+
+/* ===== calculadora ===== */
+const CEN={a:{mb:35.41,ant:-12.20,l:'— integralmente fora do custo Seta'},
+           dre:{mb:43.10,ant:-12.20,l:'— cenário DRE, carregamento parcial'},
+           b:{mb:47.61,ant:0,l:'— já embutido no custo Seta'}};
+const RL=87.61, REC=78250533; let cen='dre';
+function calc(){
+  const c=CEN[cen];
+  const com=parseFloat(document.getElementById('i-com').value);
+  const adq=parseFloat(document.getElementById('i-adq').value);
+  const mc=c.mb-com-adq;
+  document.getElementById('v-com').textContent=nf(com,1);
+  document.getElementById('v-adq').textContent=nf(adq,1);
+  document.getElementById('b-ant').textContent=c.ant?nf(c.ant):'0,00';
+  document.getElementById('b-ant2').textContent=c.ant?nf(-c.ant,1)+'%':'—';
+  document.getElementById('b-lbl').textContent=c.l;
+  document.getElementById('b-mb').textContent=nf(c.mb);
+  document.getElementById('b-mb2').textContent=nf(c.mb,1)+'%';
+  document.getElementById('b-com').textContent='−'+nf(com);
+  document.getElementById('b-adq').textContent='−'+nf(adq);
+  document.getElementById('b-mc').textContent=nf(mc);
+  document.getElementById('b-mc2').textContent=nf(mc,1)+'%';
+  document.getElementById('o-pct').textContent=nf(mc,1);
+  document.getElementById('o-rl').textContent=nf(mc/RL*100,1);
+  document.getElementById('o-rs').textContent=nf(REC*mc/100/1e6,1);
+}
+
+/* ===== abas ===== */
+const tabs=[...document.querySelectorAll('.tab')];
+function show(id){
+  tabs.forEach(t=>t.setAttribute('aria-selected',t.dataset.s===id?'true':'false'));
+  document.querySelectorAll('.sheet').forEach(s=>s.classList.toggle('on',s.id==='s-'+id));
+  window.scrollTo({top:0,behavior:'instant'});
+}
+tabs.forEach((t,i)=>{
+  t.addEventListener('click',()=>show(t.dataset.s));
+  t.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+      e.preventDefault();
+      const n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];
+      n.focus(); show(n.dataset.s);
+    }
+  });
+});
+
+function drawAll(){
+  spark('sp1',MEN.map(d=>d[1]),cs('--s2'));
+  spark('sp2',MEN.map(d=>d[2]),cs('--pos'));
+  ponte(); mensal(); filial(); abc(); marca(); dep(); mkdep(); calc();
+}
+drawAll();
+document.querySelectorAll('#s-margem .segs button').forEach(b=>b.addEventListener('click',()=>{
+  cen=b.dataset.sc;
+  document.querySelectorAll('#s-margem .segs button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
+  calc();
+}));
+['i-com','i-adq'].forEach(id=>document.getElementById(id).addEventListener('input',calc));
+if(window.matchMedia){
+  const q=window.matchMedia('(prefers-color-scheme: dark)');
+  const rd=()=>drawAll();
+  q.addEventListener?q.addEventListener('change',rd):q.addListener(rd);
+  new MutationObserver(rd).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+}
+</script>
+
+</body></html>
